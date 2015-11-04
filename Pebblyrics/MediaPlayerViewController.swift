@@ -39,7 +39,6 @@ class MediaPlayerViewController: UIViewController {
     }
     @IBOutlet var volume: UISlider!
     @IBAction func volumeAction(sender: UISlider) {
-        player.volume = volume.value
     }
     
     func playSong() {

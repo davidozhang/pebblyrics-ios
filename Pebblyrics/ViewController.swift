@@ -50,9 +50,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath: NSIndexPath = table.indexPathForSelectedRow!
             
             VC.title = songs![indexPath.row].representativeItem!.title
-            if VC.artwork != nil {
-                VC.artwork.image = songs![indexPath.row].representativeItem!.artwork?.imageWithSize(CGSizeMake(10, 10))
-            }
         }
     }
 }
