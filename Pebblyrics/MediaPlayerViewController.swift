@@ -13,6 +13,7 @@ import MediaPlayer
 class MediaPlayerViewController: UIViewController {
 
     var player: AVAudioPlayer = AVAudioPlayer()
+    var artworkImage: UIImage!
     var toggle = true // temporary
     @IBOutlet var artwork: UIImageView!
     @IBOutlet var toolbar: UIToolbar!
@@ -41,21 +42,15 @@ class MediaPlayerViewController: UIViewController {
     @IBAction func volumeAction(sender: UISlider) {
     }
     
-    func playSong() {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        artwork.image = artworkImage
+        artwork.contentMode = .ScaleAspectFit;
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
     }
 }

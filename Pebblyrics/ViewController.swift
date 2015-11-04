@@ -50,6 +50,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath: NSIndexPath = table.indexPathForSelectedRow!
             
             VC.title = songs![indexPath.row].representativeItem!.title
+            let artwork: MPMediaItemArtwork = songs![indexPath.row].representativeItem!.artwork!
+            let fullSize = CGSizeMake(artwork.bounds.size.width, artwork.bounds.size.height)
+            VC.artworkImage = songs![indexPath.row].representativeItem!.artwork?.imageWithSize(fullSize)
         }
     }
 }
