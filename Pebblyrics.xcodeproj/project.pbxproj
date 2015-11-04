@@ -17,6 +17,7 @@
 		636490581BE5762100407820 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636490571BE5762100407820 /* AVFoundation.framework */; };
 		6364905A1BE5800600407820 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636490591BE5800600407820 /* MediaPlayer.framework */; };
 		6364905C1BE58A5A00407820 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6364905B1BE58A5A00407820 /* MediaPlayerViewController.swift */; };
+		636490641BE8820D00407820 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 636490631BE8820D00407820 /* default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		636490591BE5800600407820 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6364905B1BE58A5A00407820 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		6364905D1BE70FFA00407820 /* PebbleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PebbleKit.framework; path = Pods/PebbleKit/PebbleKit.framework; sourceTree = "<group>"; };
+		636490631BE8820D00407820 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		B477743CCD2998CB822A3839 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				6364905B1BE58A5A00407820 /* MediaPlayerViewController.swift */,
 				6364902B1BE575C300407820 /* ViewController.swift */,
 				6364902D1BE575C300407820 /* Main.storyboard */,
+				636490631BE8820D00407820 /* default.png */,
 				636490301BE575C300407820 /* Assets.xcassets */,
 				636490321BE575C300407820 /* LaunchScreen.storyboard */,
 				636490351BE575C300407820 /* Info.plist */,
@@ -271,6 +274,7 @@
 				636490341BE575C300407820 /* LaunchScreen.storyboard in Resources */,
 				636490311BE575C300407820 /* Assets.xcassets in Resources */,
 				6364902F1BE575C300407820 /* Main.storyboard in Resources */,
+				636490641BE8820D00407820 /* default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
