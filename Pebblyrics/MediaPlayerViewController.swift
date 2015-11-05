@@ -8,27 +8,24 @@
 
 import AVFoundation
 import UIKit
-import MediaPlayer
 
 class MediaPlayerViewController: UIViewController {
 
-    var player: AVAudioPlayer = AVAudioPlayer()
+    var player: AVPlayer = AVPlayer()
     var artworkImage: UIImage!
-    var toggle = true // temporary
+    var songURL: NSURL!
     @IBOutlet var artwork: UIImageView!
     @IBOutlet var toolbar: UIToolbar!
     @IBAction func rewind(sender: UIBarButtonItem) {
     }
     @IBAction func playPause(sender: UIBarButtonItem) {
         var toggleBtn : UIBarButtonItem
-        if toggle {
-            // player.pause()
-            toggleBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "playPause:")
-            toggle = false
-        } else {
-            // player.play()
+        if player.rate > 0 {
+            player.pause()
             toggleBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play, target: self, action: "playPause:")
-            toggle = true
+        } else {
+            player.play()
+            toggleBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "playPause:")
         }
         var items = toolbar.items!
         items[1] = toggleBtn
@@ -44,11 +41,24 @@ class MediaPlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        artwork.image = artworkImage
-        artwork.contentMode = .ScaleAspectFit;
     }
 
+    override func viewDidAppear(animated: Bool) {
+        if songURL != nil {
+            player = AVPlayer(playerItem: AVPlayerItem(URL: songURL))
+            player.play()
+            
+            var items = toolbar.items!
+            items[1] = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Pause, target: self, action: "playPause:")
+            toolbar.setItems(items, animated: true)
+        }
+        
+        if artworkImage != nil {
+            artwork.image = artworkImage
+            artwork.contentMode = .ScaleAspectFit
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
