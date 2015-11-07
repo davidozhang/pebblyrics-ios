@@ -52,7 +52,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Pebblyrics" id="v2m-Mo-boi"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="bTt-aC-Sgj" id="Anb-n5-Kba"/>
                         <outlet property="table" destination="r2s-pL-slh" id="qrb-6m-w0m"/>
@@ -85,32 +84,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default.png" translatesAutoresizingMaskIntoConstraints="NO" id="eEg-FC-hB5">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
                                 <animations/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqA-nM-gTg">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                            <toolbar autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqA-nM-gTg">
+                                <rect key="frame" x="0.0" y="439" width="375" height="228"/>
                                 <animations/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.59999999999999998" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="NcR-Zg-QfI"/>
+                                    <constraint firstAttribute="width" constant="375" id="fLv-hu-1EA"/>
+                                    <constraint firstAttribute="height" constant="228" id="rrg-lX-IdA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="xJO-0e-7Qn"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <items>
-                                    <barButtonItem systemItem="rewind" id="yCc-t9-vgu">
+                                    <barButtonItem style="plain" systemItem="rewind" id="85G-qM-eqj">
                                         <connections>
-                                            <action selector="rewind:" destination="nWJ-JB-LUg" id="f0Y-o8-raD"/>
+                                            <action selector="rewind:" destination="nWJ-JB-LUg" id="kjR-dy-W3J"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="play" id="CBg-Rz-aJ9">
+                                    <barButtonItem style="plain" systemItem="play" id="6Kh-lh-cuT">
                                         <connections>
-                                            <action selector="playPause:" destination="nWJ-JB-LUg" id="xLF-7r-e6f"/>
+                                            <action selector="playPause:" destination="nWJ-JB-LUg" id="UEU-kI-rEf"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="fastForward" id="sZh-SQ-ueP">
+                                    <barButtonItem style="plain" systemItem="fastForward" id="RQj-NA-dg6">
                                         <connections>
-                                            <action selector="forward:" destination="nWJ-JB-LUg" id="g5y-tx-zsg"/>
+                                            <action selector="forward:" destination="nWJ-JB-LUg" id="aJ3-FF-I3A"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" id="5KB-Ke-5hk">
                                         <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="B0H-Lz-ykq">
-                                            <rect key="frame" x="111" y="7" width="215" height="31"/>
+                                            <rect key="frame" x="111" y="99" width="215" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <connections>
@@ -118,9 +124,9 @@
                                             </connections>
                                         </slider>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="action" id="BtO-tJ-YId">
+                                    <barButtonItem style="plain" systemItem="action" id="tnq-UM-v56">
                                         <connections>
-                                            <action selector="action:" destination="nWJ-JB-LUg" id="E2l-1y-MxA"/>
+                                            <action selector="action:" destination="nWJ-JB-LUg" id="x3t-AH-3S9"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -129,10 +135,9 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="artwork" destination="eEg-FC-hB5" id="vly-VA-ORk"/>
-                        <outlet property="toolbar" destination="aqA-nM-gTg" id="RAm-mf-yn5"/>
+                        <outlet property="toolbar" destination="aqA-nM-gTg" id="Efx-FQ-kZV"/>
                         <outlet property="volume" destination="B0H-Lz-ykq" id="wIq-MW-ptD"/>
                     </connections>
                 </viewController>
@@ -165,4 +170,5 @@
     <resources>
         <image name="default.png" width="512" height="512"/>
     </resources>
+    <color key="tintColor" red="0.95437254581151831" green="0.25020730747939468" blue="0.22853757307139516" alpha="1" colorSpace="calibratedRGB"/>
 </document>

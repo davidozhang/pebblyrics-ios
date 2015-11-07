@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import MediaPlayer
 import UIKit
 
 class MediaPlayerViewController: UIViewController {
@@ -32,11 +33,13 @@ class MediaPlayerViewController: UIViewController {
         toolbar.setItems(items, animated: true)
     }
     @IBAction func forward(sender: UIBarButtonItem) {
+        
     }
     @IBAction func action(sender: UIBarButtonItem) {
     }
     @IBOutlet var volume: UISlider!
     @IBAction func volumeAction(sender: UISlider) {
+        player.volume = volume.value
     }
     
     override func viewDidLoad() {
@@ -53,10 +56,8 @@ class MediaPlayerViewController: UIViewController {
             toolbar.setItems(items, animated: true)
         }
         
-        if artworkImage != nil {
-            artwork.image = artworkImage
-            artwork.contentMode = .ScaleAspectFit
-        }
+        artwork.image = artworkImage
+        artwork.contentMode = .ScaleAspectFit
     }
     
     override func didReceiveMemoryWarning() {
