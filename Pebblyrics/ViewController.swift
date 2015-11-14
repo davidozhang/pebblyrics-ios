@@ -11,13 +11,26 @@ import MediaPlayer
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     @IBOutlet var table: UITableView!
+    @IBOutlet var pebbleStatus: UITextField! = UITextField()
     var songs = MPMediaQuery.songsQuery().collections
+    let pebbleController = PebbleController.instance
+    var pebbleConnected: Bool = false {
+        didSet {
+            if pebbleConnected {
+                self.setPebbleStatusConnected()
+            } else {
+                self.setPebbleStatusDisconnected()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setPebbleStatusDisconnected()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,18 +56,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.performSegueWithIdentifier("toMediaPlayerViewController", sender: tableView)
     }
     
+    func setPebbleStatusConnected() {
+        if (self.pebbleStatus != nil) {
+            self.pebbleStatus.backgroundColor = UIColor(red: 0, green: 0.9, blue: 0, alpha: 0.6)
+            self.pebbleStatus.text = "Pebble Connected"
+        }
+    }
+    
+    func setPebbleStatusDisconnected() {
+        if (self.pebbleStatus != nil) {
+            self.pebbleStatus.backgroundColor = UIColor(red: 0.9, green: 0, blue: 0, alpha: 0.6)
+            self.pebbleStatus.text = "Pebble Not Connected"
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+    
         if segue.identifier == "toMediaPlayerViewController" {
             let VC = segue.destinationViewController as! MediaPlayerViewController
             let indexPath: NSIndexPath = table.indexPathForSelectedRow!
-            
-            VC.title = songs![indexPath.row].representativeItem!.title
-            let songURL: NSURL = songs![indexPath.row].representativeItem!.assetURL!
-            VC.songURL = songURL
-            let artwork: MPMediaItemArtwork = songs![indexPath.row].representativeItem!.artwork!
+            let songInfo = songs![indexPath.row].representativeItem!
+
+            let artist: String = songInfo.artist!
+            let artwork: MPMediaItemArtwork = songInfo.artwork!
+            let track: String = songInfo.title!
             let fullSize = CGSizeMake(artwork.bounds.size.width, artwork.bounds.size.height)
+            VC.title = track
             VC.artworkImage = songs![indexPath.row].representativeItem!.artwork?.imageWithSize(fullSize)
+            if (songInfo.assetURL != nil) {
+                let songURL: NSURL = songInfo.assetURL!
+                VC.songURL = songURL
+            }
+
+            pebbleController.sendDictionary([NSNumber(int: 0): NSString(string: artist), NSNumber(int:1): NSString(string: track)], completionHandler: { (error) -> Void in
+                print("Sent message with artist", artist, "and title", track)
+            })
         }
     }
 }
