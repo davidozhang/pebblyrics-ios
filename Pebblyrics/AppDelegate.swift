@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let pebbleController = PebbleController.instance
         pebbleController.delegate = self
-        pebbleController.UUID = "01c836d8-8f24-4d4d-b75b-a0366ce3d6a2"
+        pebbleController.UUID = "4296827b-6d2d-42ff-baa0-7bd34eeeec5f"
         return true
     }
 
