@@ -9,6 +9,9 @@
 import UIKit
 import MediaPlayer
 
+let pebbleConnectedNotificationKey = "pebbleConnected"
+let pebbleDisconnectedNotificationKey = "pebbleDisconnected"
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -16,18 +19,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var pebbleStatus: UITextField! = UITextField()
     var songs = MPMediaQuery.songsQuery().collections
     let pebbleController = PebbleController.instance
-    var pebbleConnected: Bool = false {
-        didSet {
-            if pebbleConnected {
-                self.setPebbleStatusConnected()
-            } else {
-                self.setPebbleStatusDisconnected()
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setPebbleStatusConnected", name: pebbleConnectedNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setPebbleStatusDisconnected", name: pebbleDisconnectedNotificationKey, object: nil)
         self.setPebbleStatusDisconnected()
     }
     
@@ -58,7 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func setPebbleStatusConnected() {
         if (self.pebbleStatus != nil) {
-            self.pebbleStatus.backgroundColor = UIColor(red: 0, green: 0.9, blue: 0, alpha: 0.6)
+            self.pebbleStatus.backgroundColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 0.6)
             self.pebbleStatus.text = "Pebble Connected"
         }
     }

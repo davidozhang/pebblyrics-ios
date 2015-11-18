@@ -55,6 +55,7 @@ class PebbleController: NSObject, PBPebbleCentralDelegate {
     
     func pebbleCentral(central: PBPebbleCentral, watchDidConnect watch: PBWatch, isNew: Bool) {
         print("Pebble did connect: \(watch.name)")
+        NSNotificationCenter.defaultCenter().postNotificationName("pebbleConnected", object: nil)
     }
     
     func pebbleCentral(central: PBPebbleCentral, watchDidDisconnect watch: PBWatch) {
@@ -62,6 +63,7 @@ class PebbleController: NSObject, PBPebbleCentralDelegate {
         if (self.watch == watch) {
             self.watch = nil
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("pebbleDisconnected", object: nil)
     }
     
     func launchApp(completionHandler: (error: NSError?) -> Void) {
