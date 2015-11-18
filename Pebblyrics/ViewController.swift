@@ -50,8 +50,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("toMediaPlayerViewController", sender: tableView)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
+
     func setPebbleStatusConnected() {
         if (self.pebbleStatus != nil) {
             self.pebbleStatus.backgroundColor = UIColor(red: 0, green: 0.6, blue: 0, alpha: 0.6)
